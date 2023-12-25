@@ -9,6 +9,7 @@ const enemies = [];
 
 const enemyImage = new Image();
 enemyImage.src = "enemy1.png";
+let gameFrame = 0;
 class Enemy {
   constructor() {
     this.x = Math.random() * CANVAS_WIDTH;
@@ -24,7 +25,9 @@ class Enemy {
     this.x += this.speed;
     this.y += this.speed;
     //animate sprites
-    this.frame > 4 ? (this.frame = 0) : this.frame++;
+    if (gameFrame % 2 === 0) {
+      this.frame > 4 ? (this.frame = 0) : this.frame++;
+    }
   }
   draw() {
     ctx.strokeRect(this.x, this.y, this.width, this.height);
@@ -52,6 +55,7 @@ function animate() {
     enemy.draw();
     enemy.update();
   });
+  gameFrame++;
   requestAnimationFrame(animate);
 }
 animate();
