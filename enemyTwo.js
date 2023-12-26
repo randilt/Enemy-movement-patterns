@@ -4,7 +4,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 CANVAS_WIDTH = canvas.width = 500;
 CANVAS_HEIGHT = canvas.height = 1000;
-const numOfEnemies = 10;
+const numOfEnemies = 20;
 const enemies = [];
 
 let gameFrame = 0;
@@ -21,12 +21,14 @@ class Enemy {
     this.flapSpeed = Math.floor(Math.random() * 3 + 1);
     this.x = Math.random() * (canvas.width - this.width);
     this.y = Math.random() * (canvas.height - this.height);
-    this.angle = Math.random() * 2;
+    this.angle = 0; // Math.random() * 2;
+    this.angleSpeed = Math.random() * 0.2;
+    this.curve = Math.random() * 7;
   }
   update() {
     this.x -= this.speed;
-    this.y += Math.sin(this.angle) * 5;
-    this.angle += 0.1;
+    this.y += Math.sin(this.angle) * this.curve;
+    this.angle += this.angleSpeed;
     if (this.x + this.width < 0) {
       this.x = canvas.width;
     }
