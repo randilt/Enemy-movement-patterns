@@ -11,7 +11,7 @@ let gameFrame = 0;
 class Enemy {
   constructor() {
     this.image = new Image();
-    this.image.src = "enemy3.png";
+    this.image.src = "enemy4.png";
     this.speed = Math.random() * 4 + 1;
     this.spriteWidth = 218;
     this.spriteHeight = 177;
